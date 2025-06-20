@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/inicio"
+            android:title="Inicio" />
+        <item
+            android:id="@+id/nav_consultas" android:icon="@drawable/buscarsismos"
+            android:title="Consultas"
+            />
+        <item
+            android:id="@+id/nav_noticias" android:icon="@drawable/noticias"
+            android:title="Noticias"/>
+
+        <item
+            android:id="@+id/nav_contactos" android:icon="@drawable/contactosemergencia"
+            android:title="Contactos de Emergencia"/>
+        <item
+            android:id="@+id/nav_protocolos" android:icon="@drawable/paso5"
+            android:title="Protocolos de Seguridad"/>
+
+        <item
+            android:id="@+id/nav_superuser" android:icon="@drawable/usuario"
+            android:title="Iniciar Sesion"/>
+        <item
+            android:id="@+id/nav_registrarse" android:icon="@drawable/contra"
+            android:title="Registarse"/>
+        <item
+            android:id="@+id/nav_acercade" android:icon="@drawable/acercade"
+            android:title="Acerca de"/>
+
+
+    </group>
+</menu>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.shakemap.ui.home.HomeFragment"
+        android:label="Ultimo Sismo"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_consultas"
+        android:name="com.example.shakemap.ConsultasFragment"
+        android:label="Consultas"
+        tools:layout="@layout/fragment_consultas" />
+
+    <fragment
+        android:id="@+id/nav_noticias"
+        android:name="com.example.shakemap.NoticiasFragment"
+        android:label="Noticias"
+        tools:layout="@layout/fragment_noticias" />
+
+    <fragment
+        android:id="@+id/nav_protocolos"
+        android:name="com.example.shakemap.ProtocolosFragment"
+        android:label="Protocolos de Seguridad"
+        tools:layout="@layout/fragment_protocolos" />
+
+    <fragment
+        android:id="@+id/nav_contactos"
+        android:name="com.example.shakemap.ContactosFragment"
+        android:label="Contactos de Emergencia"
+        tools:layout="@layout/fragment_contactos" />
+
+    <fragment
+        android:id="@+id/nav_acercade"
+        android:name="com.example.shakemap.AcercadeFragment"
+        android:label="Acerca de"
+        tools:layout="@layout/fragment_acercade" />
+
+    <fragment
+        android:id="@+id/nav_superuser"
+        android:name="com.example.shakemap.SuperuserFragment"
+        android:label="Iniciar Sesion"
+        tools:layout="@layout/fragment_superuser" />
+    <fragment
+        android:id="@+id/nav_registrarse"
+        android:name="com.example.shakemap.RegistrarseFragment"
+        android:label="Registrarse "
+        tools:layout="@layout/fragment_registrarse" />
+</navigation>
