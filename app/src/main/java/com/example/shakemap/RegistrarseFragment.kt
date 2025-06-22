@@ -6,20 +6,25 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.example.shakemap.databinding.FragmentRegistrarseBinding
+import com.example.shakemap.data.User
+import com.example.shakemap.ui.UserViewModel
+import com.example.shakemap.ui.UserViewModelFactory
 
 class RegistrarseFragment : Fragment() {
     private var _binding: FragmentRegistrarseBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var dbHelper: BDHelper
+    private val userViewModel: UserViewModel by viewModels {
+        UserViewModelFactory(requireActivity().application)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentRegistrarseBinding.inflate(inflater, container, false)
-        dbHelper = BDHelper(requireContext())
 
         binding.xRegistar.setOnClickListener {
             registrarUsuario()
@@ -44,18 +49,24 @@ class RegistrarseFragment : Fragment() {
             return
         }
 
-        if (dbHelper.existeUsuario(correo)) {
-            Toast.makeText(requireContext(), "Ya existe un usuario con ese correo", Toast.LENGTH_SHORT).show()
-            return
-        }
-
-        val resultado = dbHelper.insertarUsuario(nombre, correo, pass)
-
-        if (resultado) {
-            Toast.makeText(requireContext(), "Registro exitoso", Toast.LENGTH_SHORT).show()
-            limpiarCampos()
-        } else {
-            Toast.makeText(requireContext(), "Error al registrar", Toast.LENGTH_SHORT).show()
+        userViewModel.getUserByUsername(correo) { user ->
+            if (user != null) {
+                Toast.makeText(requireContext(), "Ya existe un usuario con ese correo", Toast.LENGTH_SHORT).show()
+            } else {
+                val nuevoUser = User(
+                    username = correo,
+                    password = pass, //
+                    role = "user"
+                )
+                userViewModel.insert(nuevoUser) { ok ->
+                    if (ok) {
+                        Toast.makeText(requireContext(), "Registro exitoso", Toast.LENGTH_SHORT).show()
+                        limpiarCampos()
+                    } else {
+                        Toast.makeText(requireContext(), "Error al registrar", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
         }
     }
 

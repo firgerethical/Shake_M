@@ -1,4 +1,4 @@
-package com.example.shakemap.ui
+package com.example.shakemap
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,8 +8,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
-import com.example.shakemap.MainActivity
-import com.example.shakemap.R
 
 class ProgressBar : AppCompatActivity() {
 

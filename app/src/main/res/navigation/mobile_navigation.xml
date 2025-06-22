@@ -5,50 +5,144 @@
     android:id="@+id/mobile_navigation"
     app:startDestination="@+id/nav_home">
 
+    <!-- Login -->
     <fragment
-        android:id="@+id/nav_home"
-        android:name="com.example.shakemap.ui.home.HomeFragment"
-        android:label="Ultimo Sismo"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/loginFragment"
+        android:name="com.example.shakemap.LoginFragment"
+        android:label="Iniciar Sesion"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_superuserFragment"
+            app:destination="@id/superuserFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_homeFragment"
+            app:destination="@id/nav_home" />
+        <action
+            android:id="@+id/action_loginFragment_to_registrarseFragment"
+            app:destination="@id/nav_registrarse" />
+    </fragment>
 
+    <!-- Registro de usuarios -->
+    <fragment
+        android:id="@+id/nav_registrarse"
+        android:name="com.example.shakemap.RegistrarseFragment"
+        android:label="Registrarse"
+        tools:layout="@layout/fragment_registrarse">
+        <action
+            android:id="@+id/action_registrarseFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+
+    <!-- Panel admin -->
+    <fragment
+        android:id="@+id/superuserFragment"
+        android:name="com.example.shakemap.SuperuserFragment"
+        android:label="Panel Admin"
+        tools:layout="@layout/fragment_supersuser">
+        <action
+            android:id="@+id/action_superuserFragment_to_usuariosFragment"
+            app:destination="@id/usuariosFragment" />
+        <action
+            android:id="@+id/action_superuserFragment_to_consultasFragment"
+            app:destination="@id/nav_consultas" />
+        <action
+            android:id="@+id/action_superuserFragment_to_homeFragment"
+            app:destination="@id/nav_home" />
+    </fragment>
+
+    <!-- Usuarios (CRUD) -->
+    <fragment
+        android:id="@+id/usuariosFragment"
+        android:name="com.example.shakemap.ui.usuarios.UsuariosFragment"
+        android:label="Usuarios"
+        tools:layout="@layout/fragment_usuarios">
+        <action
+            android:id="@+id/action_usuariosFragment_to_superuserFragment"
+            app:destination="@id/superuserFragment" />
+    </fragment>
+
+    <!-- Consultas (reportes) -->
     <fragment
         android:id="@+id/nav_consultas"
         android:name="com.example.shakemap.ConsultasFragment"
         android:label="Consultas"
-        tools:layout="@layout/fragment_consultas" />
+        tools:layout="@layout/fragment_consultas">
+        <action
+            android:id="@+id/action_consultasFragment_to_superuserFragment"
+            app:destination="@id/superuserFragment" />
+        <action
+            android:id="@+id/action_consultasFragment_to_homeFragment"
+            app:destination="@id/nav_home" />
+    </fragment>
 
+    <!-- Home (principal) -->
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.shakemap.ui.home.HomeFragment"
+        android:label="Ultimo Sismo"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_consultasFragment"
+            app:destination="@id/nav_consultas" />
+        <action
+            android:id="@+id/action_homeFragment_to_noticiasFragment"
+            app:destination="@id/nav_noticias" />
+        <action
+            android:id="@+id/action_homeFragment_to_protocolosFragment"
+            app:destination="@id/nav_protocolos" />
+        <action
+            android:id="@+id/action_homeFragment_to_contactosFragment"
+            app:destination="@id/nav_contactos" />
+        <action
+            android:id="@+id/action_homeFragment_to_acercadeFragment"
+            app:destination="@id/nav_acercade" />
+    </fragment>
+
+    <!-- Noticias -->
     <fragment
         android:id="@+id/nav_noticias"
         android:name="com.example.shakemap.NoticiasFragment"
         android:label="Noticias"
-        tools:layout="@layout/fragment_noticias" />
+        tools:layout="@layout/fragment_noticias">
+        <action
+            android:id="@+id/action_noticiasFragment_to_homeFragment"
+            app:destination="@id/nav_home" />
+    </fragment>
 
+    <!-- Protocolos -->
     <fragment
         android:id="@+id/nav_protocolos"
         android:name="com.example.shakemap.ProtocolosFragment"
         android:label="Protocolos de Seguridad"
-        tools:layout="@layout/fragment_protocolos" />
+        tools:layout="@layout/fragment_protocolos">
+        <action
+            android:id="@+id/action_protocolosFragment_to_homeFragment"
+            app:destination="@id/nav_home" />
+    </fragment>
 
+    <!-- Contactos -->
     <fragment
         android:id="@+id/nav_contactos"
         android:name="com.example.shakemap.ContactosFragment"
         android:label="Contactos de Emergencia"
-        tools:layout="@layout/fragment_contactos" />
+        tools:layout="@layout/fragment_contactos">
+        <action
+            android:id="@+id/action_contactosFragment_to_homeFragment"
+            app:destination="@id/nav_home" />
+    </fragment>
 
+    <!-- Acerca de -->
     <fragment
         android:id="@+id/nav_acercade"
         android:name="com.example.shakemap.AcercadeFragment"
         android:label="Acerca de"
-        tools:layout="@layout/fragment_acercade" />
+        tools:layout="@layout/fragment_acercade">
+        <action
+            android:id="@+id/action_acercadeFragment_to_homeFragment"
+            app:destination="@id/nav_home" />
+    </fragment>
 
-    <fragment
-        android:id="@+id/nav_superuser"
-        android:name="com.example.shakemap.SuperuserFragment"
-        android:label="Iniciar Sesion"
-        tools:layout="@layout/fragment_superuser" />
-    <fragment
-        android:id="@+id/nav_registrarse"
-        android:name="com.example.shakemap.RegistrarseFragment"
-        android:label="Registrarse "
-        tools:layout="@layout/fragment_registrarse" />
 </navigation>
